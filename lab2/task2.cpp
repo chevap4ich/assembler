@@ -20,21 +20,20 @@ int main() {
     reverse_loop:
         mov edx, 0             
         div const_10       
-        add ebx, edx           
+        add ebx, edx
+        cmp eax, 0
+        jz skip_multiplication           
         mov buffer, eax
         mov eax, ebx
         mul const_10
         mov ebx, eax
         mov eax, buffer
-        mov count, ebx
+    skip_multiplication:    
         cmp eax, 0        
         je done_reverse       
         jmp reverse_loop      
 
     done_reverse:
-        mov eax, ebx
-        div const_10   
-        mov ebx, eax
         cmp x, ebx
         je is_palindrome
         mov result, 0
